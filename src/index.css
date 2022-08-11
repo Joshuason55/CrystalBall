@@ -1,0 +1,75 @@
+
+
+.frontpage{
+    text-align: center;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+.last{
+    filter: invert(100%);
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px;
+}
+
+
+.image{
+    filter: invert(100%);
+    display: block;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 250px;
+}
+
+.spacing{
+    margin-top: 2.5%;
+}
+
+.page{
+    filter: invert(100%);
+    width:100%;
+    max-width: 300px;
+    height: auto;
+}
+
+.stockimage{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.summaryimage{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.playbutton{
+    display: block;
+    max-width: 400px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center; /* center the content horizontally */
+    align-items: center; /* center the content vertically */
+    --padding-x: 1.2em;
+    --height: 100px;
+    border-color: transparent; /* hide button border */
+  }
+
+.colorbtn{
+    color: black;
+}
