@@ -2,6 +2,7 @@
 import { Box, Button, createTheme, TextField, ThemeProvider,} from '@mui/material'
 import React from 'react'
 import LastLogo from './subcomponents/LastLogo';
+import ReplayIcon from '@mui/icons-material/Replay';
 
 const theme = createTheme({
     typography: {
@@ -12,7 +13,7 @@ const theme = createTheme({
     }
 });
 
-const LastPage = () => {
+const LastPage = (props) => {
   return (
     <ThemeProvider theme = {theme}>
         <Box marginTop={35}>
@@ -33,7 +34,9 @@ const LastPage = () => {
                         <Button variant="contained" color="success" size='large'>Submit</Button>
                 </Box>
             </Box>
-
+            <Box textAlign={'center'} marginTop={5}>
+                <Button variant='contained' style={{ padding: "10px 29px" }} endIcon={<ReplayIcon/>} onClick={()=>{props.getStock();props.setpageNumber(props.pageNumber-2)}}> Play Again</Button>
+            </Box>
         </Box>
     </ThemeProvider>
   )

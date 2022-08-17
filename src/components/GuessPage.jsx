@@ -1,11 +1,11 @@
 import { CheckCircle } from '@mui/icons-material'
 import { Box, Grid, IconButton, InputAdornment, TextField } from '@mui/material'
-import React from 'react'
-import DataFetching from './subcomponents/DataFetching'
+import React, { useState } from 'react'
 import PageLogo from './subcomponents/PageLogo'
 
 
 const GuessPage  = (props) => {
+  const[input,setInput]=useState(props.input)
   return (
     <div>
       {/* 1 */}
@@ -32,9 +32,11 @@ const GuessPage  = (props) => {
       </Grid>
 
 
-    {/* format datafetching centered */}
     
-    <DataFetching date={props.date} stock={props.stock} show={false}/>
+    <img className="stockimage"
+          src={props.anonymousImg}
+          alt='Anonymous'
+        />
 
 <Grid item xs={6}></Grid>
   <Grid item xs={6}>
@@ -49,10 +51,14 @@ const GuessPage  = (props) => {
               InputProps={{
                 startAdornment: <InputAdornment position="start">$</InputAdornment>,
               }}
+              onChange={(event)=> setInput(event.target.value)}
+              value={input}
             />
-        <IconButton aria-label="Check Button" alignItems='center'>
-          <CheckCircle sx={{fontSize:'200%'}} htmlColor={'green'}/>
+        <IconButton onClick={()=> {props.setInput(input); props.setpageNumber(props.pageNumber+1)}}
+          aria-label="Check Button" alignItems='center'>
+          <CheckCircle sx={{fontSize:'200%'}} htmlColor={'green'} />
         </IconButton>
+          
       </Box>
   </Box>
 

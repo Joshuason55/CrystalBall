@@ -1,6 +1,5 @@
 import { Box, Button, createTheme, Grid, ThemeProvider } from '@mui/material'
 import React, { useState } from 'react'
-import DataFetching from './subcomponents/DataFetching'
 import Feedback from './subcomponents/Feedback'
 import PageLogo from './subcomponents/PageLogo'
 import Summary from './subcomponents/Summary'
@@ -46,20 +45,25 @@ const SummaryPage = (props) => {
         <Grid container spacing={3} >
             <Grid item md={.625} xl={1}></Grid>
             <Grid item xs={12} md={6} xl={6}>
-                <DataFetching date={props.date} stock={props.stock} show={true}/>
+
+                {/* <DataFetching cbStock={props.cbStock} setcbStock={props.setcbStock}date={props.date} stock={props.stock} show={true}/> */}
+                <img className="stockimage"
+                src={props.fullImg}
+                alt='Anonymous'
+            />
             </Grid>
 
             <Grid item xs={12} sm={11} md={4.75} xl={4}>
-                <Summary/>
+                <Summary input={props.input} cbPrediction={props.cbPrediction}/>
 
 
                 {feedbackReceived?'  ':<Feedback feedbackReceivedCallback={setFeedbackReceived}/>}
                 <Box textAlign={'center'}>
                     <Box marginTop={1}>
-                        <Button variant='contained' style={{ padding: "10px 29px" }} endIcon={<ReplayIcon/>}> Play Again</Button>
+                        <Button variant='contained' style={{ padding: "10px 29px" }} endIcon={<ReplayIcon/>} onClick={()=>{props.getStock(); props.setpageNumber(props.pageNumber-1)}}> Play Again</Button>
                     </Box>
                     <Box marginTop={1}>
-                        <Button variant='contained' style={{ padding: "10px 50px" }} endIcon={<ArrowForwardIcon/>}>Next</Button>
+                        <Button variant='contained' style={{ padding: "10px 50px" }} endIcon={<ArrowForwardIcon/>} onClick={()=>props.setpageNumber(props.pageNumber+1)}>Next</Button>
                     </Box>
                 </Box>
             </Grid>

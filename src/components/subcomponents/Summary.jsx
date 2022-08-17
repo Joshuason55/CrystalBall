@@ -40,8 +40,8 @@ const Summary = (props) => {
                         fontFamily:"bahnschrift",
                         
                         }}>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-                        <TableCell align="center"><Typography>$20</Typography></TableCell>
-                        <TableCell align="center"><Typography>$15</Typography></TableCell>
+                        <TableCell align="center"><Typography>${props.cbPrediction.toFixed(2)}</Typography></TableCell>
+                        <TableCell align="center"><Typography>${props.input}</Typography></TableCell>
                         <TableCell align="center"><Typography>$10</Typography></TableCell>
                     </TableRow>
                 </TableBody>

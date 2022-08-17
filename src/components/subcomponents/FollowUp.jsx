@@ -42,11 +42,11 @@ const FollowUp = (props) => {
                     <Grid item xs={10} sm={9} md={10} lg={9}>
                     <h3>Why not?</h3>
                         <FormGroup>
-                            <FormControlLabel control={<Checkbox defaultChecked />} label="I was more accurate" />
-                            <FormControlLabel control={<Checkbox defaultChecked />} label="I don't use technical analysis for stock prediction" />
-                            <FormControlLabel control={<Checkbox defaultChecked />} label="I like the tool but wouldn't pay for it"/>
-                            <FormControlLabel control={<Checkbox defaultChecked />} label="I don't actively invest" />
-                            <FormControlLabel control={<Checkbox defaultChecked />} label="Other" />
+                            <FormControlLabel control={<Checkbox />} label="I was more accurate" />
+                            <FormControlLabel control={<Checkbox />} label="I don't use technical analysis for stock prediction" />
+                            <FormControlLabel control={<Checkbox />} label="I like the tool but wouldn't pay for it"/>
+                            <FormControlLabel control={<Checkbox />} label="I don't actively invest" />
+                            <FormControlLabel control={<Checkbox />} label="Other" />
                         </FormGroup>
                     </Grid>
                     <Grid item lg={1}></Grid>

@@ -4,7 +4,7 @@ import React from 'react'
 import FrontLogo from './subcomponents/FrontLogo'
 import TransparentPlayButton from './TransparentPlayButton.png'
 
-const FrontPage = () => {
+const FrontPage = (props) => {
   return (
     <Box marginTop={5}>
       <Box className='frontpage'fontSize={{ xs: 22, sm: 26, md: 32 }}>
@@ -17,6 +17,7 @@ const FrontPage = () => {
         <img className='playbutton'
           src={TransparentPlayButton}
           alt="logo"
+          onClick={()=>props.setpageNumber(props.pageNumber+1)}
         />
 
       </Box>
