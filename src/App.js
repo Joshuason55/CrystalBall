@@ -18,7 +18,7 @@ function App() {
     let stockNumber=Math.floor(Math.random()*(9-0+1))+0
     let dateNumber=Math.floor(Math.random()*(9-0+1))+0
 
-    let url=`https://us-central1-nimble-net-279220.cloudfunctions.net/RealPredict?s=${stockArray[stockNumber]}&d=${dateArray[dateNumber]}&v&o&m&a&l&summary`
+    let url=`https://us-central1-nimble-net-279220.cloudfunctions.net/RealPredict?s=${stockArray[stockNumber]}&d=${dateArray[dateNumber]}&o&m&a&l&summary&f`
     setSource('')
     fetch(url, {method: 'GET', mode: 'cors', })
     .then(function(resp) {
@@ -37,16 +37,40 @@ function App() {
 
   const [pageNumber, setpageNumber]=useState(1);
   const [input, setInput] = useState(0);
+  const [numAttempts, setnumAttempts]= useState(0);
 
+  const[Average, setAverage]=useState([[0,0],[0,0]]);
+  let actualPrice=(source!=='') ? source['summary']['close10']: 0
+  let cbPrediction=(source!=='') ? source['summary']['10day_center']: 0
+
+function userAverageFunct(){
+    if (numAttempts===0){
+      return
+    }
+    let userAccuracy=1-Math.abs((actualPrice-input)/actualPrice)
+    let cbAccuracy=1-Math.abs((actualPrice-cbPrediction)/actualPrice)
+    console.log(Average)
+    console.log(numAttempts)
+    let new_avg_arr = [...Average]
+    let ca = numAttempts
+    let pa = ca-1
+    new_avg_arr[ca] = [(new_avg_arr[pa][0]*pa + userAccuracy)/ca, (new_avg_arr[pa][1]*pa + cbAccuracy)/ca]
+    new_avg_arr[ca+1]=[0,0]
+    setAverage(new_avg_arr)
+    
+
+}
+useEffect(userAverageFunct,[numAttempts])
 
 
 
   return (
-
+  
     <div>
+        
         { pageNumber===1 ?<FrontPage setpageNumber={setpageNumber} pageNumber={pageNumber}/>
-        : pageNumber===2 ?<GuessPage setInput={setInput} input={input} setpageNumber={setpageNumber} pageNumber={pageNumber} anonymousImg={(source!=='') ? source['anonymousImgURL']:''}/>
-        : pageNumber===3 ?<SummaryPage cbPrediction={(source!=='') ? source['summary']['20day_center']:'noData'} getStock={getStock} input={input} setpageNumber={setpageNumber} pageNumber={pageNumber} fullImg={(source!=='') ? source['imgURL']:''}/>
+        : pageNumber===2 ?<GuessPage numAttempts={numAttempts} setnumAttempts={setnumAttempts} setInput={setInput} input={input} setpageNumber={setpageNumber} pageNumber={pageNumber} anonymousImg={(source!=='') ? source['anonymousImgURL']:''}/>
+        : pageNumber===3 ?<SummaryPage Average={Average[numAttempts]}numAttempts={numAttempts} setnumAttempts={setnumAttempts} actualPrice={(source!=='') ? source['summary']['close10']:'noData'} cbPrediction={(source!=='') ? source['summary']['10day_center']:'noData'} getStock={getStock} input={input} setpageNumber={setpageNumber} pageNumber={pageNumber} fullImg={(source!=='') ? source['imgURL']:''}/>
         :<LastPage getStock={getStock} setpageNumber={setpageNumber} pageNumber={pageNumber}/>
 }
 

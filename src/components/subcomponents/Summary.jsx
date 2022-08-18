@@ -12,10 +12,13 @@ const theme = createTheme({
     }
 });
 
+
+
 const Summary = (props) => {
+
   return (
       <ThemeProvider theme = {theme}>
-    <Box>
+    <Box marginTop={6}>
         <Box textAlign={'center'}>
             <h1 textAlign='center'>Summary</h1>
         </Box>
@@ -42,16 +45,16 @@ const Summary = (props) => {
                         }}>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
                         <TableCell align="center"><Typography>${props.cbPrediction.toFixed(2)}</Typography></TableCell>
                         <TableCell align="center"><Typography>${props.input}</Typography></TableCell>
-                        <TableCell align="center"><Typography>$10</Typography></TableCell>
+                        <TableCell align="center"><Typography>${props.actualPrice.toFixed(2)}</Typography></TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
         </TableContainer>
-        <Box textAlign={'center'}>
-            <h3>You're currently averaging ??? accuracy!</h3>
+        <Box marginTop={5} textAlign={'center'}>
+            <h2>You're currently averaging {(100*props.Average[0]).toFixed(2)}% accuracy!</h2>
         </Box>
         <Box textAlign={'center'}>
-            <h3>The Crystal Ball is averaging ??? accuracy!</h3>
+            <h2>The Crystal Ball is averaging {(100*props.Average[1]).toFixed(2)}% accuracy!</h2>
         </Box>
     </Box>
     </ThemeProvider>

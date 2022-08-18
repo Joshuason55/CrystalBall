@@ -15,7 +15,7 @@ const GuessPage  = (props) => {
           <Grid item xs={5} sm={5} md={4} lg={3} xl={2.5}>
             <Grid container direction='column'fontSize={{ xs: 14, sm: 17, md: 20, lg:20.5, xl:20.5 }}>
               <h1> Crystal Ball Test</h1>
-              <h4>Guess the Stock Price in 20 Days</h4>
+              <h4>Guess the Stock Price in 10 Days</h4>
             </Grid>
           </Grid>
 
@@ -44,7 +44,7 @@ const GuessPage  = (props) => {
   <Box marginTop={1} className='frontPage' vertical-align='baseline' textAlign='center'>
     <Box className='btn'>
       <TextField
-              label="Guess the 20D Stock Price"
+              label="Guess the 10D Stock Price"
               id="outlined-start-adornment"
               sx={{ m: 1, width: '45ch' }}
               type='number'
@@ -54,7 +54,7 @@ const GuessPage  = (props) => {
               onChange={(event)=> setInput(event.target.value)}
               value={input}
             />
-        <IconButton onClick={()=> {props.setInput(input); props.setpageNumber(props.pageNumber+1)}}
+        <IconButton onClick={()=> {props.setnumAttempts(props.numAttempts+1); props.setInput(input); props.setpageNumber(props.pageNumber+1)}}
           aria-label="Check Button" alignItems='center'>
           <CheckCircle sx={{fontSize:'200%'}} htmlColor={'green'} />
         </IconButton>

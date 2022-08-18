@@ -51,8 +51,8 @@ const Feedback = (props) => {
     const [currentValue, setCurrentValue]=useState(0);
     return (
     <ThemeProvider theme = {theme}>
-        <Box textAlign={'center'} marginTop={1} marginBottom={2} display='flex' justifyContent='center' alignItems='center'>
-            <h3>Would you use the Crystal Ball? &nbsp;&nbsp;&nbsp;</h3>
+        <Box textAlign={'center'} marginTop={5} marginBottom={1} display='flex' justifyContent='center' alignItems='center'>
+            <h2>Would you use the Crystal Ball? &nbsp;&nbsp;&nbsp;</h2>
 
             <StyledRating
               name="highlight-selected-only"
