@@ -56,7 +56,7 @@ const Feedback = (props) => {
 
             <StyledRating
               name="highlight-selected-only"
-              max={3}
+              max={2}
               defaultValue={0}
               IconContainerComponent={IconContainer}
               getLabelText={(value) => customIcons[value].label}
@@ -72,18 +72,10 @@ const Feedback = (props) => {
 
         </Box>
 
-        <FollowUp showDetail={currentValue} feedbackReceivedCallBack={props.feedbackReceivedCallBack}/>
+        <FollowUp feedbackCounter={props.feedbackCounter} setfeedbackCounter={props.setfeedbackCounter} showDetail={currentValue} feedbackReceivedCallBack={props.feedbackReceivedCallBack}/>
         
     </ThemeProvider>
   )
 }
 
 export default Feedback            
-
-// //code for the bold and unbold thumbs up and thumbs down
-// {/* <IconButton aria-label="Thumbs up">
-// <Checkbox icon={<ThumbUpOutlined sx={{color:"green", fontSize:'30px'}} />} checkedIcon={<ThumbUp sx={{color:"green", fontSize:'30px'}}/>} />
-// </IconButton>
-// <IconButton aria-label="Thumbs Down">
-// <Checkbox icon={<ThumbDownOutlined sx={{color:"red", fontSize:'30px'}}/>} checkedIcon={<ThumbDown sx={{color:"red", fontSize:'30px'}}/>} />
-// </IconButton> */}

@@ -24,18 +24,25 @@ const LastPage = (props) => {
             <Box marginTop={3} textAlign={'center'} fontSize={{ xs: 15, sm: 20 }}>
                 <h4>The Crystal Ball uses machine learning to get more advanced every day, <br/>Enter your email to receive updates on the Crystal Ball!</h4>
             </Box>
-            <Box textAlign={'center'}>
-                <Box marginTop={2} className='btn'>
-                    <TextField
-                        id="outlined-name"
-                        label="Email"
-                        sx={{ m: 1, width: '35ch' }}
-                    />
-                        <Button variant="contained" color="success" size='large'>Submit</Button>
+            {props.emailCounter===0
+            ?
+                <Box textAlign={'center'}>
+                    <Box marginTop={2} className='btn'>
+                        <TextField
+                            id="outlined-name"
+                            label="Email"
+                            sx={{ m: 1, width: '35ch' }}
+                        />
+                            <Button variant="contained" color="success" size='large' onClick={()=> props.setemailCounter(1)}>Submit</Button>
+                    </Box>
                 </Box>
-            </Box>
+                            :
+                            <Box marginTop={3} textAlign={'center'}>
+                                <h3>Email Submitted!</h3>
+                            </Box>
+                }
             <Box textAlign={'center'} marginTop={5}>
-                <Button variant='contained' style={{ padding: "10px 29px" }} endIcon={<ReplayIcon/>} onClick={()=>{props.getStock();props.setpageNumber(props.pageNumber-2)}}> Play Again</Button>
+                <Button variant='contained' style={{ padding: "10px 29px" }} endIcon={<ReplayIcon/>} onClick={()=>{ props.setLoading(false); props.getStock();props.setpageNumber(props.pageNumber-2); props.setInput(0)}}> Play Again</Button>
             </Box>
         </Box>
     </ThemeProvider>

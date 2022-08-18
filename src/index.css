@@ -16,7 +16,6 @@
     max-width: 300px;
 }
 
-
 .image{
     filter: invert(100%);
     display: block;
@@ -41,6 +40,12 @@
     display: block;
     max-width: 100%;
     height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loadingimage{
+    display: block;
     margin-left: auto;
     margin-right: auto;
 }

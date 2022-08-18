@@ -11,7 +11,7 @@ const dateArray=['2019-09-01','2019-10-01','2019-11-01','2019-12-01','2020-01-01
 function App() {
 
   const [source,setSource]= useState('')
-
+  const [loading, setLoading]=useState(false)
 
   function getStock(){
 
@@ -22,7 +22,9 @@ function App() {
     setSource('')
     fetch(url, {method: 'GET', mode: 'cors', })
     .then(function(resp) {
+      setLoading(true);
       return resp.json()
+      
     })
 
     .then(function(resp){
@@ -49,8 +51,6 @@ function userAverageFunct(){
     }
     let userAccuracy=1-Math.abs((actualPrice-input)/actualPrice)
     let cbAccuracy=1-Math.abs((actualPrice-cbPrediction)/actualPrice)
-    console.log(Average)
-    console.log(numAttempts)
     let new_avg_arr = [...Average]
     let ca = numAttempts
     let pa = ca-1
@@ -62,16 +62,62 @@ function userAverageFunct(){
 }
 useEffect(userAverageFunct,[numAttempts])
 
-
+const [feedbackCounter, setfeedbackCounter]=useState(0);
+const [emailCounter, setemailCounter]=useState(0);
 
   return (
   
     <div>
         
-        { pageNumber===1 ?<FrontPage setpageNumber={setpageNumber} pageNumber={pageNumber}/>
-        : pageNumber===2 ?<GuessPage numAttempts={numAttempts} setnumAttempts={setnumAttempts} setInput={setInput} input={input} setpageNumber={setpageNumber} pageNumber={pageNumber} anonymousImg={(source!=='') ? source['anonymousImgURL']:''}/>
-        : pageNumber===3 ?<SummaryPage Average={Average[numAttempts]}numAttempts={numAttempts} setnumAttempts={setnumAttempts} actualPrice={(source!=='') ? source['summary']['close10']:'noData'} cbPrediction={(source!=='') ? source['summary']['10day_center']:'noData'} getStock={getStock} input={input} setpageNumber={setpageNumber} pageNumber={pageNumber} fullImg={(source!=='') ? source['imgURL']:''}/>
-        :<LastPage getStock={getStock} setpageNumber={setpageNumber} pageNumber={pageNumber}/>
+        { pageNumber===1 ?
+        <FrontPage 
+          setpageNumber={setpageNumber} 
+          pageNumber={pageNumber}
+        />
+        : pageNumber===2 ?
+        <GuessPage 
+          loading={loading}
+          numAttempts={numAttempts} 
+          setnumAttempts={setnumAttempts} 
+          setInput={setInput} input={input} 
+          setpageNumber={setpageNumber} 
+          pageNumber={pageNumber} 
+          anonymousImg={(source!=='') ? source['anonymousImgURL']:''}
+        />
+        : pageNumber===3 ?
+        <SummaryPage 
+          loading={loading}
+          setLoading={setLoading}
+          feedbackCounter={feedbackCounter}
+          setfeedbackCounter={setfeedbackCounter}
+          emailCounter={emailCounter}
+          setemailCounter={setemailCounter}
+          Average={Average[numAttempts]}
+          numAttempts={numAttempts} 
+          setnumAttempts={setnumAttempts}
+          actualPrice={(source!=='') ? source['summary']['close10']:'noData'} 
+          cbPrediction={(source!=='') ? source['summary']['10day_center']:'noData'} 
+          getStock={getStock} 
+          input={input} 
+          setInput={setInput}
+          setpageNumber={setpageNumber} 
+          pageNumber={pageNumber} 
+          fullImg={(source!=='') ? source['imgURL']:''}
+        />
+
+        :<LastPage 
+          loading={loading}
+          setLoading={setLoading}
+          feedbackCounter={feedbackCounter}
+          setfeedbackCounter={setfeedbackCounter}
+          emailCounter={emailCounter}
+          setemailCounter={setemailCounter}
+          input={input} 
+          setInput={setInput}
+          getStock={getStock} 
+          setpageNumber={setpageNumber} 
+          pageNumber={pageNumber}
+        />
 }
 
     </div>

@@ -1,4 +1,4 @@
-import { Box, Checkbox, createTheme, FormControlLabel, FormGroup, Grid,  Slider,  ThemeProvider } from '@mui/material';
+import { Box, Button, Checkbox, createTheme, FormControlLabel, FormGroup, Grid,  Slider,  ThemeProvider } from '@mui/material';
 import React from 'react'
 
 const theme = createTheme({
@@ -51,15 +51,17 @@ const FollowUp = (props) => {
                     </Grid>
                     <Grid item lg={1}></Grid>
                 </Grid>
+                <Grid container>
+                    <Grid item xs={2} sm={3} md={1} lg={2}></Grid>
+                        <Grid item xs={10} sm={9} md={10} lg={9}>
+                            <Button variant="contained" color="success" size='medium'onClick={()=>props.setfeedbackCounter(1)}>Submit</Button>
+                        </Grid>
+                </Grid>
             </Box>
         </Box>
 
-
-
 :
 
-
-        
         <Box textAlign={'center'}>
         <h3>How much are you willing to pay for this service per week?</h3>
         <Box>
@@ -78,6 +80,12 @@ const FollowUp = (props) => {
                     />
                 </Grid>
                 <Grid item xs={2.5}></Grid>
+            </Grid>
+            <Grid container>
+                    <Grid item xs={2} sm={3} md={12} lg={2}></Grid>
+                        <Grid item xs={8} sm={5.5} md={10} lg={8}>
+                            <Button variant="contained" color="success" size='medium' onClick={()=>props.setfeedbackCounter(1)}>Submit</Button>
+                        </Grid>
             </Grid>
         </Box>
     </Box>

@@ -2,10 +2,13 @@ import { CheckCircle } from '@mui/icons-material'
 import { Box, Grid, IconButton, InputAdornment, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import PageLogo from './subcomponents/PageLogo'
-
+import Loading from './Loading.gif'
 
 const GuessPage  = (props) => {
   const[input,setInput]=useState(props.input)
+  
+
+
   return (
     <div>
       {/* 1 */}
@@ -32,11 +35,20 @@ const GuessPage  = (props) => {
       </Grid>
 
 
-    
-    <img className="stockimage"
+    {props.loading ?(
+      <img className="stockimage"
           src={props.anonymousImg}
-          alt='Anonymous'
+          alt=''
         />
+      )
+      
+      :
+      <img className='loadingimage'
+        src={Loading}
+        alt='Loading...'
+      />
+      }
+
 
 <Grid item xs={6}></Grid>
   <Grid item xs={6}>
@@ -54,7 +66,7 @@ const GuessPage  = (props) => {
               onChange={(event)=> setInput(event.target.value)}
               value={input}
             />
-        <IconButton onClick={()=> {props.setnumAttempts(props.numAttempts+1); props.setInput(input); props.setpageNumber(props.pageNumber+1)}}
+        <IconButton onClick={()=> { props.setnumAttempts(props.numAttempts+1); props.setInput(input); props.setpageNumber(props.pageNumber+1);}}
           aria-label="Check Button" alignItems='center'>
           <CheckCircle sx={{fontSize:'200%'}} htmlColor={'green'} />
         </IconButton>

@@ -1,5 +1,5 @@
 import { Box, Button, createTheme, Grid, ThemeProvider } from '@mui/material'
-import React, { useState } from 'react'
+import React from 'react'
 import Feedback from './subcomponents/Feedback'
 import PageLogo from './subcomponents/PageLogo'
 import Summary from './subcomponents/Summary'
@@ -16,7 +16,6 @@ const theme = createTheme({
 });
 
 const SummaryPage = (props) => {
-    const[feedbackReceived, setFeedbackReceived]=useState(false);
     
   return (
     <ThemeProvider theme={theme}>
@@ -54,15 +53,20 @@ const SummaryPage = (props) => {
 
             <Grid item xs={12} sm={11} md={4.75} xl={4}>
                 <Summary Average={props.Average} input={props.input} cbPrediction={props.cbPrediction} actualPrice={props.actualPrice}/>
-
-
-                {feedbackReceived?'  ':<Feedback feedbackReceivedCallback={setFeedbackReceived}/>}
+                { props.feedbackCounter===0
+                ?<Feedback feedbackCounter={props.feedbackCounter} setfeedbackCounter={props.setfeedbackCounter}/>
+                :props.feedbackCounter===1?
+                <Box marginTop={2} textAlign={'center'}>
+                    Feedback Submitted!
+                </Box>
+                :''
+                }
                 <Box textAlign={'center'}>
                     <Box marginTop={2}>
-                        <Button variant='contained' style={{ padding: "10px 29px" }} endIcon={<ReplayIcon/>} onClick={()=>{props.getStock(); props.setpageNumber(props.pageNumber-1)}}> Play Again</Button>
+                        <Button variant='contained' style={{ padding: "10px 29px" }} endIcon={<ReplayIcon/>} onClick={()=>{props.setLoading(false); props.setfeedbackCounter(props.feedbackCounter*2);props.getStock(); props.setpageNumber(props.pageNumber-1); props.setInput(0)}}> Play Again</Button>
                     </Box>
                     <Box marginTop={1}>
-                        <Button variant='contained' style={{ padding: "10px 50px" }} endIcon={<ArrowForwardIcon/>} onClick={()=>props.setpageNumber(props.pageNumber+1)}>Next</Button>
+                        <Button variant='contained' style={{ padding: "10px 50px" }} endIcon={<ArrowForwardIcon/>} onClick={()=>{props.setfeedbackCounter(props.feedbackCounter*2);props.setpageNumber(props.pageNumber+1)}}>Next</Button>
                     </Box>
                 </Box>
             </Grid>
