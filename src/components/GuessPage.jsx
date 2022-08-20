@@ -1,6 +1,6 @@
 import { CheckCircle } from '@mui/icons-material'
 import { Box, Grid, IconButton, InputAdornment, TextField } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import PageLogo from './subcomponents/PageLogo'
 import Loading from './Loading.gif'
 
@@ -36,10 +36,37 @@ const GuessPage  = (props) => {
 
 
     {props.loading ?(
+      <Fragment>
       <img className="stockimage"
           src={props.anonymousImg}
           alt=''
         />
+      <Grid item xs={6}></Grid>
+      <Grid item xs={6}>
+            {/* 3 */}
+        <Box marginTop={1} className='frontPage' vertical-align='baseline' textAlign='center'>
+          <Box className='btn'>
+            <TextField
+                    label="Guess the 10 day Stock Price"
+                    id="outlined-start-adornment"
+                    sx={{ m: 1, width: '45ch' }}
+                    type='number'
+                    InputProps={{
+                      startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                    }}
+                    onChange={(event)=> setInput(event.target.value)}
+                    value={input == 0 ? '' : input}
+                  />
+              <IconButton onClick={()=> { props.setnumAttempts(props.numAttempts+1); props.setInput(input); props.setpageNumber(props.pageNumber+1);}}
+                aria-label="Check Button" alignItems='center'>
+                <CheckCircle sx={{fontSize:'200%'}} htmlColor={'green'} />
+              </IconButton>
+                
+            </Box>
+        </Box>
+
+        </Grid>
+      </Fragment>
       )
       
       :
@@ -50,31 +77,6 @@ const GuessPage  = (props) => {
       }
 
 
-<Grid item xs={6}></Grid>
-  <Grid item xs={6}>
-      {/* 3 */}
-  <Box marginTop={1} className='frontPage' vertical-align='baseline' textAlign='center'>
-    <Box className='btn'>
-      <TextField
-              label="Guess the 10D Stock Price"
-              id="outlined-start-adornment"
-              sx={{ m: 1, width: '45ch' }}
-              type='number'
-              InputProps={{
-                startAdornment: <InputAdornment position="start">$</InputAdornment>,
-              }}
-              onChange={(event)=> setInput(event.target.value)}
-              value={input}
-            />
-        <IconButton onClick={()=> { props.setnumAttempts(props.numAttempts+1); props.setInput(input); props.setpageNumber(props.pageNumber+1);}}
-          aria-label="Check Button" alignItems='center'>
-          <CheckCircle sx={{fontSize:'200%'}} htmlColor={'green'} />
-        </IconButton>
-          
-      </Box>
-  </Box>
-
-  </Grid>
     </div>
   )
 }

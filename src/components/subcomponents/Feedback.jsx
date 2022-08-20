@@ -5,7 +5,7 @@ import FollowUp from './FollowUp';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import Rating from '@mui/material/Rating';
-
+import Log from '../log';
 
 const theme = createTheme({
     typography: {
@@ -63,6 +63,8 @@ const Feedback = (props) => {
               highlightSelectedOnly
               onChange={(event,newValue)=>{
                 setCurrentValue(newValue);
+                if (newValue == 1 || newValue == 2)
+                Log.log(`Feedback: ${newValue == 1 ? 'like' : 'dislike'}`)
                 if (newValue===3){
                   props.feedbackReceivedCallback(true)
                 }
