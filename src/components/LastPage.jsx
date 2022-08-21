@@ -1,8 +1,9 @@
 
 import { Box, Button, createTheme, TextField, ThemeProvider,} from '@mui/material'
-import React from 'react'
+import React, {useState} from 'react'
 import LastLogo from './subcomponents/LastLogo';
 import ReplayIcon from '@mui/icons-material/Replay';
+import Log from './log';
 
 const theme = createTheme({
     typography: {
@@ -14,6 +15,7 @@ const theme = createTheme({
 });
 
 const LastPage = (props) => {
+    const [userEmail, setUserEmail] = useState('')
   return (
     <ThemeProvider theme = {theme}>
         <Box marginTop={35}>
@@ -30,10 +32,15 @@ const LastPage = (props) => {
                     <Box marginTop={2} className='btn'>
                         <TextField
                             id="outlined-name"
+                            value={userEmail}
+                            onChange={(evt) => {setUserEmail(evt.target.value)}}
                             label="Email"
                             sx={{ m: 1, width: '35ch' }}
                         />
-                            <Button variant="contained" color="success" size='large' onClick={()=> props.setemailCounter(1)}>Submit</Button>
+                            <Button variant="contained" color="success" size='large' onClick={()=> {
+                                    Log.log(`Email:${userEmail}`)
+                                    props.setemailCounter(1)
+                                }}>Submit</Button>
                     </Box>
                 </Box>
                             :
@@ -42,7 +49,12 @@ const LastPage = (props) => {
                             </Box>
                 }
             <Box textAlign={'center'} marginTop={5}>
-                <Button variant='contained' style={{ padding: "10px 29px" }} endIcon={<ReplayIcon/>} onClick={()=>{ props.setLoading(false); props.getStock();props.setpageNumber(props.pageNumber-2); props.setInput(0)}}> Play Again</Button>
+                <Button variant='contained' style={{ padding: "10px 29px" }} endIcon={<ReplayIcon/>} onClick={()=>{ 
+                        props.setLoading(false); 
+                        props.getStock();
+                        props.setpageNumber(props.pageNumber-2); 
+                        props.setInput(0)
+                    }}> Play Again</Button>
             </Box>
         </Box>
     </ThemeProvider>

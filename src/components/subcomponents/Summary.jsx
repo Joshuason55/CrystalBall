@@ -27,13 +27,13 @@ const Summary = (props) => {
                 <TableHead>
                 <TableRow>
                     <TableCell align="center" >
-                        <Typography> Our Prediction<br/>(Accuracy)</Typography>
+                        <Typography> <b>Our Prediction</b><br/>(Accuracy)</Typography>
                     </TableCell>
                     <TableCell align="center">
-                        <Typography>Your Prediction<br/>(Accuracy)</Typography>
+                        <Typography><b>Your Prediction</b><br/>(Accuracy)</Typography>
                     </TableCell>
                     <TableCell align="center">
-                        <Typography>Reality</Typography>
+                        <Typography><b>Reality</b></Typography>
                     </TableCell>
                 </TableRow>
                 </TableHead>
@@ -43,9 +43,9 @@ const Summary = (props) => {
                         fontFamily:"bahnschrift",
                         
                         }}>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-                        <TableCell align="center"><Typography>${props.cbPrediction.toFixed(2)}<br/>({100*props.Average[6].toFixed(2)}%)</Typography></TableCell>
-                        <TableCell align="center"><Typography>${props.input}<br/>({100*props.Average[5].toFixed(2)}%)</Typography></TableCell>
-                        <TableCell align="center"><Typography>${props.actualPrice.toFixed(2)}</Typography></TableCell>
+                        <TableCell align="center"><Typography><b>${props.cbPrediction.toFixed(2)}</b><br/>({100*props.Average[6].toFixed(2)}%)</Typography></TableCell>
+                        <TableCell align="center"><Typography><b>${props.input}</b><br/>({100*props.Average[5].toFixed(2)}%)</Typography></TableCell>
+                        <TableCell align="center"><Typography><b>${props.actualPrice.toFixed(2)}</b></Typography></TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

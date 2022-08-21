@@ -3,7 +3,7 @@ import {v4 as uuidv4} from 'uuid';
 const uuidSession = uuidv4();
 
 class LogClass {
-    constructor(user = 'Guest', session = uuidSession, app = 'CB Test') {
+    constructor(user = 'Guest', session = uuidSession, app = 'CB Test - v1') {
         this.app = app;
         this.user = user;
         this.session = session;

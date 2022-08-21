@@ -66,7 +66,7 @@ const SummaryPage = (props) => {
                         <Button variant='contained' style={{ padding: "10px 29px" }} endIcon={<ReplayIcon/>} onClick={()=>{props.setLoading(false); props.setfeedbackCounter(props.feedbackCounter*2);props.getStock(); props.setpageNumber(props.pageNumber-1); props.setInput(0)}}> Play Again</Button>
                     </Box>
                     <Box marginTop={1}>
-                        <Button variant='contained' style={{ padding: "10px 50px" }} endIcon={<ArrowForwardIcon/>} onClick={()=>{props.setfeedbackCounter(props.feedbackCounter*2);props.setpageNumber(props.pageNumber+1)}}>Next</Button>
+                        <Button variant='contained' style={{ padding: "10px 50px" }} endIcon={<ArrowForwardIcon/>} onClick={()=>{props.setfeedbackCounter(props.feedbackCounter*2);props.setpageNumber(props.pageNumber+1)}}>Sign up</Button>
                     </Box>
                 </Box>
             </Grid>
