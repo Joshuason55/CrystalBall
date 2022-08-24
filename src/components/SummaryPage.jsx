@@ -52,7 +52,9 @@ const SummaryPage = (props) => {
             </Grid>
 
             <Grid item xs={12} sm={11} md={4.75} xl={4}>
-                <Summary Average={props.Average} input={props.input} cbPrediction={props.cbPrediction} actualPrice={props.actualPrice}/>
+                <Summary Average={props.Average} input={props.input} cbPrediction={props.cbPrediction} 
+                        actualPrice={props.actualPrice} AttemptSummary={props.AttemptSummary} numAttempts={props.numAttempts}
+                        />
                 { props.feedbackCounter===0
                 ?<Feedback feedbackCounter={props.feedbackCounter} setfeedbackCounter={props.setfeedbackCounter}/>
                 :props.feedbackCounter===1?
