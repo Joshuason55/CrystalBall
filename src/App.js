@@ -4,6 +4,7 @@ import GuessPage from "./components/GuessPage";
 import LastPage from "./components/LastPage";
 import SummaryPage from "./components/SummaryPage";
 import Log from './components/log';
+import rawData from './components/CBData';
 
 const stockArray=['WFC','ADBE', 'BAC', 'SBUX', 'NVDA','MCD','KO','DIS','AAL','HRB']
 // const dateArray=['2019-09-01','2019-10-01','2019-11-01','2019-12-01','2020-01-01','2020-02-01','2020-03-01','2020-04-01','2020-05-01','2020-06-01']
@@ -15,26 +16,32 @@ function App() {
   const [loading, setLoading]=useState(false)
 
   function getStock(){
+    console.log(rawData.length)
+    // console.log(rawData[0])
+    
+    let src = rawData[Math.floor(Math.random() * rawData.length)];
+    console.log(src)
+    setLoading(true);
+    setSource(src);
+    // let stockNumber=Math.floor(Math.random()*(9-0+1))+0
+    // // let dateNumber=Math.floor(Math.random()*(9-0+1))+0
+    // let date=new Date('2019-06-01'); 
+    // date.setDate(Math.floor(Math.random()*650));
+    // date=date.toISOString().split('T')[0]
 
-    let stockNumber=Math.floor(Math.random()*(9-0+1))+0
-    // let dateNumber=Math.floor(Math.random()*(9-0+1))+0
-    let date=new Date('2019-06-01'); 
-    date.setDate(Math.floor(Math.random()*650));
-    date=date.toISOString().split('T')[0]
-
-    // let url=`https://us-central1-nimble-net-279220.cloudfunctions.net/RealPredict?s=${stockArray[stockNumber]}&d=${dateArray[dateNumber]}&o&m&a&summary&f`
-    let url=`https://us-central1-nimble-net-279220.cloudfunctions.net/RealPredict?s=${stockArray[stockNumber]}&d=${date}&o&m&a&summary&f`
-    setSource('')
-    fetch(url, {method: 'GET', mode: 'cors', })
-    .then(function(resp) {
-      setLoading(true);
-      return resp.json()
+    // // let url=`https://us-central1-nimble-net-279220.cloudfunctions.net/RealPredict?s=${stockArray[stockNumber]}&d=${dateArray[dateNumber]}&o&m&a&summary&f`
+    // let url=`https://us-central1-nimble-net-279220.cloudfunctions.net/RealPredict?s=${stockArray[stockNumber]}&d=${date}&o&m&a&summary`
+    // setSource('')
+    // fetch(url, {method: 'GET', mode: 'cors', })
+    // .then(function(resp) {
+    //   setLoading(true);
+    //   return resp.json()
       
-    })
+    // })
 
-    .then(function(resp){
-      setSource(resp)
-    })
+    // .then(function(resp){
+    //   setSource(resp)
+    // })
   }
 
   useEffect(getStock,[])
