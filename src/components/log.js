@@ -54,6 +54,16 @@ class LogClass {
 const Log = new LogClass()
 export default Log;
 
+let url=`https://geolocation-db.com/json/`
+fetch(url, {method: 'GET', mode: 'cors', })
+.then(function(resp) {
+  return resp.json()
+})
+.then(function(resp){
+  let user = `${resp.country_code},${resp.latitude},${resp.longitude}`
+  Log.set(user)
+  Log.log('Player location')
+})
 
 // A text log entry
 // const text_entry = log.entry('Hello world!');
