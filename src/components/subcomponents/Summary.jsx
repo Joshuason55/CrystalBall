@@ -51,11 +51,9 @@ const Summary = (props) => {
             </Table>
         </TableContainer>
         <Box marginTop={5} textAlign={'center'}>
-            <h2>You are currently averaging {(100*props.Average[0]).toFixed(2)}% deviation!</h2>
-        </Box>
-        <Box textAlign={'center'}>
-            <h2>The Crystal Ball is averaging {(100*props.Average[1]).toFixed(2)}% deviation!</h2><br/>
-            <h2>You have played {props.numAttempts > 1 ? `${props.numAttempts} times` : `${props.numAttempts} time`}, your current win streak is {props.Average[7]}!</h2>
+            <Typography variant='h6'>You are currently averaging <b>{(100*props.Average[0]).toFixed(2)}%</b> deviation!<br/>
+            The Crystal Ball is averaging <b>{(100*props.Average[1]).toFixed(2)}%</b> deviation!<br/><br/>
+            You have played {props.numAttempts > 1 ? `${props.numAttempts} times` : `${props.numAttempts} time`}, your current win streak is <b>{props.Average[7]}</b>!</Typography>
         </Box>
     </Box>
     </ThemeProvider>

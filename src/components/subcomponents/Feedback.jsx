@@ -1,5 +1,5 @@
 import { HighlightOff, ThumbDownOutlined, ThumbUpOutlined } from '@mui/icons-material';
-import { Box, createTheme, ThemeProvider} from '@mui/material'
+import { Box, createTheme, ThemeProvider, Typography} from '@mui/material'
 import React, { useState }  from 'react'
 import FollowUp from './FollowUp';
 import PropTypes from 'prop-types';
@@ -52,7 +52,7 @@ const Feedback = (props) => {
     return (
     <ThemeProvider theme = {theme}>
         <Box textAlign={'center'} marginTop={5} marginBottom={1} display='flex' justifyContent='center' alignItems='center'>
-            <h2>Would you use the Crystal Ball? &nbsp;&nbsp;&nbsp;</h2>
+            <Typography variant='h6'><b>Would you use the Crystal Ball?</b> &nbsp;&nbsp;&nbsp;</Typography>
 
             <StyledRating
               name="highlight-selected-only"

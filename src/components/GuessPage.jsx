@@ -49,7 +49,7 @@ const GuessPage  = (props) => {
             <TextField
                     label="Guess the 10 day Stock Price"
                     id="outlined-start-adornment"
-                    sx={{ m: 1, width: '45ch' }}
+                    sx={{ m: 1, width: '70' }}
                     type='number'
                     InputProps={{
                       startAdornment: <InputAdornment position="start">$</InputAdornment>,
